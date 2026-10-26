@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ড্যাশবোর্ড | myGov মাইগভ ডেমো</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23006a4e'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23d9382e'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="section">
+    <div class="container">
+      <!-- welcome -->
+      <div class="card card-pad" style="background:linear-gradient(135deg,var(--brand-900),var(--brand-700));color:#fff;border:none;margin-bottom:1.4rem;display:flex;justify-content:space-between;align-items:center;gap:1.2rem;flex-wrap:wrap">
+        <div>
+          <h1 style="color:#fff;font-size:1.5rem" id="welcome-name">স্বাগতম, নাগরিক</h1>
+          <p style="color:#cfe5db;margin:0" id="welcome-meta">মাইগভ নাগরিক ড্যাশবোর্ড</p>
+        </div>
+        <div style="text-align:center">
+          <div class="progress-ring-wrap">
+            <div class="progress-ring" id="profile-ring" style="--p:0"><b id="profile-pct">০%</b></div>
+          </div>
+          <small style="color:#cfe5db">প্রোফাইল সম্পন্নতা</small>
+        </div>
+      </div>
+
+      <!-- stats -->
+      <div class="grid grid-4" id="stat-grid" style="margin-bottom:1.6rem"></div>
+
+      <!-- applications -->
+      <div class="card">
+        <div class="card-pad" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem">
+          <h2 style="margin:0;font-size:1.2rem">আমার আবেদন সমূহ</h2>
+          <a class="btn btn-primary btn-sm" href="services.html">+ নতুন আবেদন করুন</a>
+        </div>
+        <div class="table-wrap" style="border:none;border-top:1px solid var(--line);border-radius:0">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ট্র্যাকিং নম্বর</th>
+                <th>সেবার নাম</th>
+                <th>দপ্তর</th>
+                <th>তারিখ</th>
+                <th>অবস্থা</th>
+              </tr>
+            </thead>
+            <tbody id="app-tbody"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="empty-apps" hidden>
+          <span class="es-icon">📭</span>
+          <b>এখনো কোনো আবেদন নেই</b>
+          <p>সেবা খাত থেকে প্রয়োজনীয় সেবায় আবেদন করুন।</p>
+          <a class="btn btn-primary" href="services.html">সেবা খুঁজুন</a>
+        </div>
+      </div>
+
+      <!-- quick links -->
+      <div class="grid grid-3 mt-3">
+        <a class="service-card" href="profile.html"><span class="service-icon">👤</span><h3>প্রোফাইল হালনাগাদ</h3><span class="count">NID, ঠিকানা ও ডকুমেন্ট</span></a>
+        <a class="service-card" href="track.html"><span class="service-icon">📍</span><h3>আবেদন ট্র্যাকিং</h3><span class="count">মোবাইল ও ট্র্যাকিং নম্বর দিয়ে</span></a>
+        <a class="service-card" href="services.html"><span class="service-icon">🧾</span><h3>সেবা খাত</h3><span class="count">১৭২+ অনলাইন সেবা</span></a>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/services-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/backend.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

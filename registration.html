@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>রেজিস্ট্রেশন | myGov মাইগভ ডেমো</title>
+  <meta name="description" content="myGov ডেমো — নতুন নাগরিক একাউন্ট তৈরি করুন (মোবাইল/ইমেইল, OTP যাচাই, পাসওয়ার্ড)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23006a4e'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23d9382e'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-head">
+        <svg width="56" height="56" viewBox="0 0 64 64" role="img" aria-label="myGov">
+          <circle cx="32" cy="32" r="30" fill="#ffffff" opacity="0.14" />
+          <path d="M20 44V20h6l12 15V20h6v24h-6L26 29v15z" fill="#fff" />
+          <circle cx="46" cy="18" r="5.5" fill="#d9382e" />
+        </svg>
+        <h1>নতুন একাউন্ট তৈরি করুন</h1>
+        <p>Create your myGov citizen account <span id="mode-label"></span></p>
+      </div>
+
+      <div class="auth-body">
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+          <div class="step active" data-step="1"><span class="dot">১</span>তথ্য প্রদান</div>
+          <div class="step" data-step="2"><span class="dot">২</span>OTP যাচাই</div>
+          <div class="step" data-step="3"><span class="dot">৩</span>পাসওয়ার্ড</div>
+          <div class="step" data-step="4"><span class="dot">✓</span>সম্পন্ন</div>
+        </div>
+
+        <!-- Demo banner -->
+        <div class="banner banner-demo" id="demo-banner" hidden>
+          <span>🧪</span>
+          <div><b>ডেমো মোড চলছে।</b> সত্যিকারের SMS/ইমেইল পাঠানো হয় না — OTP স্ক্রিনে দেখানো হবে। Supabase কানেক্ট করলে সত্যিকারের ডাটাবেজ ব্যবহার হবে।</div>
+        </div>
+
+        <!-- STEP 1 — identity -->
+        <section class="step-pane active" data-pane="1">
+          <div class="tabs" role="tablist">
+            <button class="tab-btn active" type="button" data-tab="mobile" role="tab">মোবাইল</button>
+            <button class="tab-btn" type="button" data-tab="email" role="tab">ইমেইল</button>
+          </div>
+
+          <form id="form-identity" novalidate>
+            <!-- Mobile tab -->
+            <div class="tab-pane active" data-tabpane="mobile">
+              <div class="field">
+                <label for="m-name">আপনার নাম (ইংরেজিতে) <span class="req">*</span></label>
+                <input class="input" id="m-name" type="text" autocomplete="name" placeholder="e.g. Mohammad Rahim" />
+                <div class="input-hint">শুধু ইংরেজি অক্ষর ব্যবহার করুন</div>
+                <div class="error-msg">সঠিক ইংরেজি নাম লিখুন (ন্যূনতম ৩ অক্ষর)</div>
+              </div>
+              <div class="field">
+                <label for="m-mobile">মোবাইল নম্বর (ইংরেজিতে) <span class="req">*</span></label>
+                <div class="input-group">
+                  <select class="input prefix-select" id="m-cc" aria-label="Country code">
+                    <option value="+88" selected>+88 (বাংলাদেশ)</option>
+                    <option value="+966">+966 (সৌদি আরব)</option>
+                    <option value="+971">+971 (ইউএই)</option>
+                    <option value="+44">+44 (যুক্তরাজ্য)</option>
+                    <option value="+1">+1 (যুক্তরাষ্ট্র)</option>
+                    <option value="+60">+60 (মালয়েশিয়া)</option>
+                    <option value="+65">+65 (সিঙ্গাপুর)</option>
+                    <option value="+91">+91 (ভারত)</option>
+                  </select>
+                  <input class="input" id="m-mobile" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="01XXXXXXXXX" maxlength="14" />
+                </div>
+                <div class="input-hint">বাংলাদেশি নম্বর: 01 দিয়ে শুরু, মোট ১০ সংখ্যা</div>
+                <div class="error-msg">সঠিক মোবাইল নম্বর লিখুন (যেমন: 01712345678)</div>
+              </div>
+            </div>
+
+            <!-- Email tab -->
+            <div class="tab-pane" data-tabpane="email">
+              <div class="field">
+                <label for="e-name">আপনার নাম (ইংরেজিতে) <span class="req">*</span></label>
+                <input class="input" id="e-name" type="text" autocomplete="name" placeholder="e.g. Mohammad Rahim" />
+                <div class="error-msg">সঠিক ইংরেজি নাম লিখুন (ন্যূনতম ৩ অক্ষর)</div>
+              </div>
+              <div class="field">
+                <label for="e-email">ইমেইল ঠিকানা <span class="req">*</span></label>
+                <input class="input" id="e-email" type="email" autocomplete="email" placeholder="name@example.com" />
+                <div class="error-msg">সঠিক ইমেইল ঠিকানা লিখুন</div>
+              </div>
+              <div class="field">
+                <label for="e-mobile">মোবাইল নম্বর (ঐচ্ছিক)</label>
+                <div class="input-group">
+                  <select class="input prefix-select" id="e-cc" aria-label="Country code">
+                    <option value="+88" selected>+88 (বাংলাদেশ)</option>
+                    <option value="+966">+966 (সৌদি আরব)</option>
+                    <option value="+971">+971 (ইউএই)</option>
+                    <option value="+44">+44 (যুক্তরাজ্য)</option>
+                    <option value="+1">+1 (যুক্তরাষ্ট্র)</option>
+                  </select>
+                  <input class="input" id="e-mobile" type="tel" inputmode="numeric" placeholder="01XXXXXXXXX" maxlength="14" />
+                </div>
+                <div class="error-msg">সঠিক মোবাইল নম্বর লিখুন</div>
+              </div>
+            </div>
+
+            <!-- demo captcha (real reCAPTCHA can be dropped in here) -->
+            <div class="captcha-box">
+              <input type="checkbox" id="captcha" />
+              <label for="captcha" class="checkbox-row" style="margin:0">আমি রোবট নই <span class="bn-en">(demo captcha)</span></label>
+              <span class="captcha-badge">🔒 reCAPTCHA স্টাইল</span>
+            </div>
+            <div class="field" id="captcha-field">
+              <div class="error-msg">চালিয়ে যেতে চেকবক্সে টিক দিন</div>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" type="submit" id="btn-send-otp">
+              রেজিস্ট্রেশন করুন
+            </button>
+          </form>
+
+          <p class="auth-alt">আগেই মাইগভে একাউন্ট করেছেন? <a href="login.html">লগইন করুন</a></p>
+          <div class="auth-divider">অন্যান্য লগইন</div>
+          <div class="auth-sub-links">
+            <a href="#" data-demo-link="প্রশাসনিক লগইন">প্রশাসনিক লগইন</a>
+            <a href="#" data-demo-link="সহায়ক লগইন">সহায়ক লগইন</a>
+          </div>
+        </section>
+
+        <!-- STEP 2 — OTP -->
+        <section class="step-pane" data-pane="2" hidden>
+          <div class="otp-info">
+            <p style="font-size:1.6rem;margin-bottom:.2rem">📲</p>
+            <p>আপনার <b id="otp-target">—</b> এ ৬ সংখ্যার OTP পাঠানো হয়েছে</p>
+            <p class="text-sm text-muted">নিচের কোডটি লিখুন (মেয়াদ ৫ মিনিট)</p>
+          </div>
+          <div class="banner banner-info" id="otp-demo-code" hidden>
+            <span>🔑</span>
+            <div>ডেমো OTP: <code id="otp-demo-value">১২৩৪৫৬</code> — এটি কপি করে নিচে বসান</div>
+          </div>
+          <div class="otp-boxes" id="otp-boxes">
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 1" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 2" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 3" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 4" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 5" />
+            <input class="otp-box" inputmode="numeric" maxlength="1" aria-label="OTP digit 6" />
+          </div>
+          <div class="banner banner-error" id="otp-error" hidden><span>⚠️</span><div id="otp-error-text">ভুল OTP</div></div>
+          <div class="resend-row">
+            <span id="resend-timer">পুনরায় OTP পাঠাতে <b id="resend-seconds">৩০</b> সেকেন্ড অপেক্ষা করুন</span>
+            <button id="btn-resend" type="button" hidden>পুনরায় OTP পাঠান</button>
+          </div>
+          <div style="display:flex;gap:.7rem;margin-top:1.3rem">
+            <button class="btn btn-ghost" type="button" id="btn-back-1">← ফিরে যান</button>
+            <button class="btn btn-primary btn-block" type="button" id="btn-verify-otp">OTP যাচাই করুন</button>
+          </div>
+        </section>
+
+        <!-- STEP 3 — password -->
+        <section class="step-pane" data-pane="3" hidden>
+          <form id="form-password" novalidate>
+            <div class="field">
+              <label for="password">পাসওয়ার্ড নির্ধারণ করুন <span class="req">*</span></label>
+              <div class="password-wrap">
+                <input class="input" id="password" type="password" autocomplete="new-password" placeholder="ন্যূনতম ৮ অক্ষর" />
+                <button class="toggle-pw" type="button" data-target="password">দেখুন</button>
+              </div>
+              <div class="pw-meter"><i id="pw-bar"></i></div>
+              <ul class="pw-rules" id="pw-rules">
+                <li data-rule="length">ন্যূনতম ৮ অক্ষর</li>
+                <li data-rule="upper">বড় হাতের অক্ষর (A-Z)</li>
+                <li data-rule="lower">ছোট হাতের অক্ষর (a-z)</li>
+                <li data-rule="number">সংখ্যা (0-9)</li>
+                <li data-rule="special">বিশেষ অক্ষর (!@#$…)</li>
+              </ul>
+              <div class="error-msg">পাসওয়ার্ড নিয়ম অনুসরণ করুন</div>
+            </div>
+            <div class="field">
+              <label for="password2">পাসওয়ার্ড নিশ্চিত করুন <span class="req">*</span></label>
+              <div class="password-wrap">
+                <input class="input" id="password2" type="password" autocomplete="new-password" placeholder="একই পাসওয়ার্ড আবার লিখুন" />
+                <button class="toggle-pw" type="button" data-target="password2">দেখুন</button>
+              </div>
+              <div class="error-msg">পাসওয়ার্ড দুটি মিলছে না</div>
+            </div>
+            <button class="btn btn-primary btn-block btn-lg" type="submit" id="btn-complete">
+              <span id="complete-label">রেজিস্ট্রেশন সম্পন্ন করুন</span>
+            </button>
+          </form>
+          <p class="auth-alt text-sm">💡 মাইগভের মতো এই ডেমোতেও OTP কে পাসওয়ার্ড হিসেবে ব্যবহার করা যায় (যদি নিয়ম মেনে চলে)</p>
+        </section>
+
+        <!-- STEP 4 — success -->
+        <section class="step-pane" data-pane="4" hidden>
+          <div class="success-screen">
+            <div class="success-check">✓</div>
+            <h2>অভিনন্দন! আপনার একাউন্ট তৈরি হয়েছে</h2>
+            <p class="text-muted">Account created successfully — আপনি এখন মাইগভ ডেমোর সকল সেবায় আবেদন করতে পারবেন।</p>
+            <div class="summary-box" id="success-summary"></div>
+            <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap">
+              <a class="btn btn-primary" href="dashboard.html">ড্যাশবোর্ডে যান</a>
+              <a class="btn btn-outline" href="services.html">সেবা খুঁজুন</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/backend.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/registration.js"></script>
+</body>
+</html>

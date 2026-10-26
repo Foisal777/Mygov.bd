@@ -1,0 +1,26 @@
+# Netlify configuration for the myGov demo
+# Static site lives in the repository root; serverless functions in
+# /netlify/functions are detected and deployed automatically.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+  # No build step required — plain HTML/CSS/JS.
+
+[functions]
+  node_bundler = "esbuild"
+
+# Security headers (static demo)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Long-cache for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
