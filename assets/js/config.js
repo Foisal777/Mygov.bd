@@ -21,6 +21,9 @@ window.MYGOV_CONFIG = {
   // OTP used by demo mode (shown on screen instead of a real SMS)
   DEMO_OTP: "123456",
 
+  // Demo admin panel credentials (demo mode only — shown on the admin login page)
+  DEMO_ADMIN: { USERNAME: "admin@mygov-demo.app", PASSWORD: "Admin@123" },
+
   // Mobile-only accounts are stored in Supabase Auth with a synthetic
   // email built from the phone number, e.g. 8801712345678@phone.mygov-demo.app
   SYNTHETIC_EMAIL_DOMAIN: "phone.mygov-demo.app",
@@ -32,5 +35,6 @@ window.MYGOV_CONFIG = {
     SEND_OTP: "/.netlify/functions/send-otp",
     VERIFY_OTP: "/.netlify/functions/verify-otp",
     RESET_MOBILE_PASSWORD: "/.netlify/functions/reset-mobile-password",
+    ADMIN_API: "/.netlify/functions/admin-api",
   },
 };

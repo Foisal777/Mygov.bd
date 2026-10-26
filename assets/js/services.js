@@ -8,13 +8,21 @@ const filters = {
   sector: params.get("sector") || "",
   recipient: params.get("recipient") || "",
 };
-let currentUser = null;
 
 const el = (id) => document.getElementById(id);
 
+let SERVICES_LIVE = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
-  currentUser = await MyGovBackend.currentUser();
   el("service-query").value = filters.q;
+
+  // Live service catalogue (admin-editable); static list as fallback
+  try {
+    const live = await MyGovBackend.listServices();
+    SERVICES_LIVE = live.length ? live : SERVICES;
+  } catch {
+    SERVICES_LIVE = SERVICES;
+  }
 
   /* sector chips */
   el("sector-chips").innerHTML =
@@ -64,14 +72,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const directId = params.get("service");
   if (directId) {
-    const s = SERVICES.find((x) => x.id === directId);
+    const s = SERVICES_LIVE.find((x) => x.id === directId);
     if (s) openModal(s);
   }
 });
 
 function filtered() {
   const q = filters.q.toLowerCase();
-  return SERVICES.filter((s) => {
+  return SERVICES_LIVE.filter((s) => {
     if (filters.sector && s.sector !== filters.sector) return false;
     if (filters.recipient && s.recipient !== filters.recipient) return false;
     if (!q) return true;
@@ -118,13 +126,14 @@ function openModal(s) {
     <ul class="doc-list">
       ${s.docs.map((d) => `<li>📎 ${d}</li>`).join("")}
     </ul>
-    <div id="apply-result"></div>
     <div style="display:flex;gap:.7rem;margin-top:1.2rem;flex-wrap:wrap">
       <button class="btn btn-primary" id="btn-apply">📝 আবেদন করুন</button>
       <button class="btn btn-ghost" id="btn-modal-close">বন্ধ করুন</button>
     </div>`;
   el("btn-modal-close").addEventListener("click", closeModal);
-  el("btn-apply").addEventListener("click", () => apply(s));
+  el("btn-apply").addEventListener("click", () => {
+    location.href = `apply.html?id=${encodeURIComponent(s.id)}`;
+  });
   el("modal-backdrop").classList.add("open");
   document.body.style.overflow = "hidden";
 }
@@ -132,41 +141,4 @@ function openModal(s) {
 function closeModal() {
   el("modal-backdrop").classList.remove("open");
   document.body.style.overflow = "";
-}
-
-async function apply(service) {
-  if (!currentUser) {
-    toast("আবেদনের জন্য আগে লগইন করুন", "error");
-    setTimeout(() => (location.href = "login.html?next=services.html"), 900);
-    return;
-  }
-  const btn = el("btn-apply");
-  btn.disabled = true;
-  btn.innerHTML = `<span class="spinner"></span> জমা হচ্ছে…`;
-  try {
-    const app = await MyGovBackend.applyService({
-      name: service.name,
-      sector: sectorName(service.sector),
-      office: service.office,
-      fee: service.fee,
-    });
-    toast("আবেদন জমা হয়েছে — ট্র্যাকিং নম্বর সংরক্ষণ করুন", "success", 6000);
-    el("apply-result").innerHTML = `
-      <div class="banner banner-success" style="margin-top:1rem">
-        <span>✅</span>
-        <div>
-          <b>আবেদন সফলভাবে জমা হয়েছে</b><br />
-          ট্র্যাকিং নম্বর: <code>${app.tracking_no}</code>
-        </div>
-      </div>`;
-    btn.hidden = true;
-    el("btn-modal-close").textContent = "ড্যাশবোর্ডে যান";
-    el("btn-modal-close").classList.remove("btn-ghost");
-    el("btn-modal-close").classList.add("btn-outline");
-    el("btn-modal-close").onclick = () => (location.href = "dashboard.html");
-  } catch (err) {
-    toast(err.message || "আবেদন জমা দেওয়া যায়নি", "error");
-    btn.disabled = false;
-    btn.textContent = "📝 আবেদন করুন";
-  }
 }

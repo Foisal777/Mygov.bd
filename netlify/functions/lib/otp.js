@@ -35,7 +35,7 @@ function supabaseConfigured() {
   return !!(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 }
 
-async function supabaseRest(path, { method = "GET", body } = {}) {
+async function supabaseRest(path, { method = "GET", body, headers = {} } = {}) {
   const res = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${path}`, {
     method,
     headers: {
@@ -43,6 +43,7 @@ async function supabaseRest(path, { method = "GET", body } = {}) {
       Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
       "Content-Type": "application/json",
       Prefer: method === "POST" ? "return=representation" : "return=minimal",
+      ...headers,
     },
     body: body ? JSON.stringify(body) : undefined,
   });

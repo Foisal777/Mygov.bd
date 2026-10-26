@@ -15,6 +15,13 @@ function escapeHtml(s) {
 function toBnDigits(input) {
   return String(input).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]);
 }
+// Parse a value that may contain Bengali numerals (e.g. "১৫" -> 15)
+function parseNumber(input) {
+  const bnMap = { "০": "0", "১": "1", "২": "2", "৩": "3", "৪": "4", "৫": "5", "৬": "6", "৭": "7", "৮": "8", "৯": "9" };
+  const ascii = String(input ?? "").replace(/[০-৯]/g, (d) => bnMap[d]).replace(/[^\d.-]/g, "");
+  const n = Number(ascii);
+  return Number.isFinite(n) ? n : NaN;
+}
 function initials(name = "") {
   return name.trim().split(/\s+/).slice(0, 2).map((w) => w[0]?.toUpperCase() ?? "").join("") || "ইউ";
 }
@@ -158,6 +165,7 @@ async function renderChrome() {
           <a href="track.html">আবেদন ট্র্যাকিং</a>
           <a href="registration.html">নতুন একাউন্ট</a>
           <a href="login.html">নাগরিক লগইন</a>
+          <a href="admin/login.html">🛡️ অ্যাডমিন প্যানেল</a>
         </div>
         <div>
           <h4>সেবা খাত</h4>
