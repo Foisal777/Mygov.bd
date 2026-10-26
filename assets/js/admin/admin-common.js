@@ -63,9 +63,30 @@ function renderAdminChrome(activeKey, title) {
       <main class="admin-content" id="admin-content"></main>
     </div>`;
 
-  document.getElementById("mobile-menu-btn")?.addEventListener("click", () =>
-    document.getElementById("admin-sidebar").classList.toggle("open")
-  );
+  const sidebar = document.getElementById("admin-sidebar");
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  // Create overlay for mobile sidebar
+  let overlay = document.getElementById("admin-sidebar-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "admin-sidebar-overlay";
+    overlay.className = "admin-sidebar-overlay";
+    document.body.appendChild(overlay);
+  }
+  function toggleSidebar(open) {
+    const shouldOpen = open !== undefined ? open : !sidebar.classList.contains("open");
+    sidebar.classList.toggle("open", shouldOpen);
+    overlay.style.display = shouldOpen ? "block" : "none";
+    document.body.style.overflow = shouldOpen ? "hidden" : "";
+  }
+  menuBtn?.addEventListener("click", () => toggleSidebar());
+  overlay.addEventListener("click", () => toggleSidebar(false));
+  // Close sidebar on nav link click (mobile)
+  sidebar?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 860) toggleSidebar(false);
+    });
+  });
   document.getElementById("admin-logout").addEventListener("click", async () => {
     await MyGovBackend.adminLogout();
     location.href = "login.html";
