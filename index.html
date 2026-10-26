@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>myGov মাইগভ — এক ঠিকানায় সরকারি সেবা (ডেমো)</title>
+  <meta name="description" content="myGov ডেমো — নাগরিক, ব্যবসায়ী ও সরকারি কর্মকর্তাদের সমন্বিত ডিজিটাল সরকারি সেবা প্ল্যাটফর্ম। রেজিস্ট্রেশন, লগইন, সেবা আবেদন ও ট্র্যাকিং।" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23006a4e'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23d9382e'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>এক ঠিকানায় সরকারি সেবা</h1>
+      <p>নাগরিক, ব্যবসায়ী ও সরকারি কর্মকর্তা-কর্মচারীদের জন্য সমন্বিত ডিজিটাল প্ল্যাটফর্ম — ঘরে বসে আবেদন করুন, ফি পরিশোধ করুন এবং আবেদনের অগ্রগতি ট্র্যাক করুন।</p>
+      <p class="hero-en">One-stop platform for G2C, G2B and G2G services of the Government of Bangladesh (demo build).</p>
+      <form class="search-box" id="hero-search">
+        <input type="search" id="hero-query" placeholder="কোন সেবা খুঁজছেন? যেমন: জন্ম নিবন্ধন, ট্রেড লাইসেন্স, ভাতা…" aria-label="সেবা খুঁজুন" />
+        <button class="btn btn-primary" type="submit">🔍 অনুসন্ধান</button>
+      </form>
+      <div class="hero-links">
+        <a href="track.html">📍 আবেদনের সর্বশেষ অবস্থা দেখুন</a>
+        <a href="registration.html">👤 নতুন একাউন্ট খুলুন</a>
+      </div>
+      <div class="hero-badges">
+        <span>✓ ১৭২+ সেবা খাত</span>
+        <span>✓ অনলাইন আবেদন ও পেমেন্ট</span>
+        <span>✓ ডকুমেন্ট লকার</span>
+        <span>✓ QR যাচাই</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service sectors -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">সেবা খুঁজুন</h2>
+      <p class="section-sub">সেবা খাত, মন্ত্রণালয়/দপ্তর বা সেবাগ্রহীতা অনুসারে আপনার প্রয়োজনীয় সেবা বেছে নিন</p>
+
+      <div class="tabs" id="home-tabs">
+        <button class="tab-btn active" type="button" data-home-tab="sector">সেবা খাত ভিত্তিক</button>
+        <button class="tab-btn" type="button" data-home-tab="office">মন্ত্রণালয়/দপ্তর ভিত্তিক</button>
+        <button class="tab-btn" type="button" data-home-tab="recipient">সেবাগ্রহীতা অনুসারে</button>
+        <button class="tab-btn" type="button" data-home-tab="ticket">ই-টিকিটিং</button>
+      </div>
+
+      <div class="home-tabpane" data-home-pane="sector">
+        <div class="grid grid-4" id="sector-grid"></div>
+      </div>
+      <div class="home-tabpane" data-home-pane="office" hidden>
+        <div class="grid grid-3" id="office-grid"></div>
+      </div>
+      <div class="home-tabpane" data-home-pane="recipient" hidden>
+        <div class="grid grid-3" id="recipient-grid"></div>
+      </div>
+      <div class="home-tabpane" data-home-pane="ticket" hidden>
+        <div class="card card-pad">
+          <h3>ই-টিকিটিং সেবা</h3>
+          <p class="text-muted">পরিবহন ও দর্শনীয় স্থানের টিকিটের জন্য নিচের লিংকড সেবা ব্যবহার করুন (ডেমো)।</p>
+          <a class="btn btn-primary" href="services.html">সেবা তালিকায় যান</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Linked services -->
+  <section class="linked-strip">
+    <div class="container">
+      <h2 class="section-title" style="font-size:1.25rem">মাইগভে সংযুক্ত সেবা সমূহ</h2>
+      <div class="linked-items" id="linked-items"></div>
+    </div>
+  </section>
+
+  <!-- Popular services -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">জনপ্রিয় সেবা সমূহ</h2>
+      <p class="section-sub">সবচেয়ে বেশি ব্যবহৃত সেবাগুলোতে দ্রুত আবেদন করুন</p>
+      <div class="grid grid-3" id="popular-grid"></div>
+      <div class="text-center mt-3">
+        <a class="btn btn-outline" href="services.html">সকল সেবা ক্যাটাগরি দেখুন →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:#fff;border-block:1px solid var(--line)">
+    <div class="container">
+      <h2 class="section-title">সচরাচর জিজ্ঞাসা</h2>
+      <p class="section-sub">মাইগভ রেজিস্ট্রেশন ও সেবা সংক্রান্ত সাধারণ প্রশ্ন</p>
+      <div id="faq-list" style="max-width:860px"></div>
+    </div>
+  </section>
+
+  <!-- Help desk -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">কোন সাহায্য প্রয়োজন?</h2>
+      <p class="section-sub">মাইগভ সংক্রান্ত যেকোনো সমস্যায় নিচের নম্বরে কল করুন</p>
+      <div class="grid grid-3">
+        <div class="help-card">
+          <span class="help-icon">📞</span>
+          <div><b>৩৩৩</b><span class="text-muted">সরকারি তথ্য ও সেবা হেল্পলাইন</span></div>
+        </div>
+        <div class="help-card">
+          <span class="help-icon">📞</span>
+          <div><b>+৮৮০ ১৫৫০ ০৬০০৬০</b><span class="text-muted">মাইগভ হেল্পডেস্ক</span></div>
+        </div>
+        <div class="help-card">
+          <span class="help-icon">📞</span>
+          <div><b>+৮৮০ ১৫৭২ ০৫১৯৫২</b><span class="text-muted">কারিগরি সহায়তা</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <button class="chat-fab" id="chat-fab" type="button">💬 মাইগভ সহায়ক</button>
+
+  <script src="assets/js/services-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/backend.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

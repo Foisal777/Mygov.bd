@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>নাগরিক লগইন | myGov মাইগভ ডেমো</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23006a4e'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23d9382e'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-head">
+        <svg width="56" height="56" viewBox="0 0 64 64" role="img" aria-label="myGov">
+          <circle cx="32" cy="32" r="30" fill="#ffffff" opacity="0.14" />
+          <path d="M20 44V20h6l12 15V20h6v24h-6L26 29v15z" fill="#fff" />
+          <circle cx="46" cy="18" r="5.5" fill="#d9382e" />
+        </svg>
+        <h1>মাইগভ একাউন্টে লগইন করুন</h1>
+        <p>Citizen login <span id="mode-label"></span></p>
+      </div>
+
+      <div class="auth-body">
+        <div class="banner banner-demo" id="demo-banner" hidden>
+          <span>🧪</span>
+          <div><b>ডেমো মোড।</b> রেজিস্ট্রেশন করা একাউন্টের তথ্য এই ব্রাউজারেই সংরক্ষিত থাকে।</div>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" type="button" data-tab="mobile">মোবাইল</button>
+          <button class="tab-btn" type="button" data-tab="email">ইমেইল</button>
+        </div>
+
+        <form id="form-login" novalidate>
+          <div class="field">
+            <label for="identifier" id="identifier-label">মোবাইল নম্বর (ইংরেজিতে) <span class="req">*</span></label>
+            <input class="input" id="identifier" type="tel" autocomplete="username" placeholder="01XXXXXXXXX" />
+            <div class="input-hint" id="identifier-hint">রেজিস্ট্রেশন করা মোবাইল নম্বর লিখুন</div>
+            <div class="error-msg">সঠিক তথ্য লিখুন</div>
+          </div>
+          <div class="field">
+            <label for="password">পাসওয়ার্ড <span class="req">*</span></label>
+            <div class="password-wrap">
+              <input class="input" id="password" type="password" autocomplete="current-password" placeholder="আপনার পাসওয়ার্ড" />
+              <button class="toggle-pw" type="button" data-target="password">দেখুন</button>
+            </div>
+            <div class="error-msg">পাসওয়ার্ড লিখুন</div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;flex-wrap:wrap;gap:.5rem">
+            <label class="checkbox-row" style="margin:0">
+              <input type="checkbox" id="remember" /> আমাকে মনে রাখুন
+            </label>
+            <a href="forgot-password.html">পাসওয়ার্ড ভুলে গেছেন?</a>
+          </div>
+
+          <button class="btn btn-primary btn-block btn-lg" type="submit" id="btn-login">লগইন করুন</button>
+        </form>
+
+        <p class="auth-alt">মাইগভে একাউন্ট নেই? <a href="registration.html">রেজিষ্টেশন করুন</a></p>
+        <div class="auth-divider">অন্যান্য লগইন</div>
+        <div class="auth-sub-links">
+          <a href="#" data-demo-link="প্রশাসনিক লগইন">প্রশাসনিক লগইন</a>
+          <a href="#" data-demo-link="সহায়ক লগইন">সহায়ক লগইন</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/backend.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>

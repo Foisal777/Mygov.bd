@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>আমার প্রোফাইল | myGov মাইগভ ডেমো</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23006a4e'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23d9382e'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">আমার প্রোফাইল</h1>
+      <p class="section-sub">সেবা আবেদনে স্বয়ংক্রিয়ভাবে ব্যবহৃত ব্যক্তিগত তথ্য ও ডকুমেন্ট</p>
+
+      <div class="grid grid-2" style="align-items:start">
+        <!-- Personal info -->
+        <div class="card card-pad">
+          <h2 style="font-size:1.15rem">ব্যক্তিগত তথ্য</h2>
+
+          <div class="avatar-upload">
+            <div class="avatar-preview" id="avatar-preview">ইউ</div>
+            <div>
+              <label class="btn btn-ghost btn-sm" for="photo-input" style="cursor:pointer">📷 ছবি আপলোড করুন</label>
+              <input type="file" id="photo-input" accept="image/*" hidden />
+              <p class="input-hint" style="margin:.5rem 0 0">পাসপোর্ট সাইজ, সর্বোচ্চ ২MB (ডেমোতে শুধু প্রিভিউ)</p>
+            </div>
+          </div>
+
+          <form id="profile-form" novalidate>
+            <div class="field">
+              <label for="full_name">পূর্ণ নাম (ইংরেজিতে)</label>
+              <input class="input" id="full_name" type="text" placeholder="Mohammad Rahim" />
+            </div>
+            <div class="field">
+              <label for="mobile">মোবাইল নম্বর</label>
+              <input class="input" id="mobile" type="text" disabled />
+            </div>
+            <div class="field">
+              <label for="email">ইমেইল</label>
+              <input class="input" id="email" type="email" placeholder="name@example.com" />
+            </div>
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="nid">জাতীয় পরিচয়পত্র (NID)</label>
+                <input class="input" id="nid" type="text" inputmode="numeric" placeholder="10 / 17 সংখ্যা" />
+              </div>
+              <div class="field">
+                <label for="birth_date">জন্ম তারিখ</label>
+                <input class="input" id="birth_date" type="date" />
+              </div>
+            </div>
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="gender">লিঙ্গ</label>
+                <select class="input" id="gender">
+                  <option value="">নির্বাচন করুন</option>
+                  <option value="male">পুরুষ</option>
+                  <option value="female">মহিলা</option>
+                  <option value="other">অন্যান্য</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="division">বিভাগ</label>
+                <select class="input" id="division">
+                  <option value="">নির্বাচন করুন</option>
+                  <option>ঢাকা</option><option>চট্টগ্রাম</option><option>রাজশাহী</option>
+                  <option>খুলনা</option><option>বরিশাল</option><option>সিলেট</option>
+                  <option>রংপুর</option><option>ময়মনসিংহ</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="district">জেলা</label>
+              <input class="input" id="district" type="text" placeholder="যেমন: ঢাকা" />
+            </div>
+            <div class="field">
+              <label for="address">বর্তমান ঠিকানা</label>
+              <textarea class="input" id="address" rows="3" placeholder="গ্রাম/মহল্লা, থানা, জেলা"></textarea>
+            </div>
+            <button class="btn btn-primary btn-block btn-lg" type="submit" id="btn-save">💾 তথ্য হালনাগাদ করুন</button>
+          </form>
+        </div>
+
+        <!-- Verification + documents -->
+        <div>
+          <div class="card card-pad mb-2">
+            <h2 style="font-size:1.15rem">পরিচয় যাচাই</h2>
+            <p class="text-muted text-sm">NID বা জন্ম নিবন্ধন দিয়ে প্রোফাইল ভেরিফাই করুন (১৮+ হলে NID, কম বয়সী হলে BRN)।</p>
+            <div id="verify-area">
+              <span class="verify-badge" id="verify-badge" hidden>✓ যাচাইকৃত</span>
+              <button class="btn btn-outline btn-block" type="button" id="btn-verify">🪪 NID দিয়ে ভেরিফাই করুন</button>
+            </div>
+          </div>
+
+          <div class="card card-pad">
+            <h2 style="font-size:1.15rem">ডকুমেন্ট লকার</h2>
+            <p class="text-muted text-sm">আবেদনের সময় পুনরায় আপলোড না করেই এই ডকুমেন্ট ব্যবহার হবে।</p>
+            <div id="doc-list"></div>
+            <div class="banner banner-info" style="margin-top:1rem">
+              <span>ℹ️</span>
+              <div>ডেমোতে ফাইল ব্রাউজারেই থাকে; প্রোডাকশনে Supabase Storage বকেটে আপলোড হবে।</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/backend.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>

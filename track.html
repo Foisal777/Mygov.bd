@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>আবেদন ট্র্যাকিং | myGov মাইগভ ডেমো</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23006a4e'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23d9382e'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="section">
+    <div class="container-narrow">
+      <div class="card card-pad">
+        <h1 class="text-center" style="font-size:1.4rem">আবেদনের সর্বশেষ অবস্থা দেখুন</h1>
+        <p class="text-center text-muted">আপনার মোবাইল নম্বর ও আবেদনের ট্র্যাকিং নম্বর লিখুন</p>
+
+        <div class="banner banner-demo">
+          <span>🧪</span>
+          <div>ডেমো তথ্য: মোবাইল <code>01700000000</code>, ট্র্যাকিং নম্বর <code>BD-DEMO-1001</code> অথবা <code>BD-DEMO-1002</code></div>
+        </div>
+
+        <form id="track-form" novalidate>
+          <div class="field">
+            <label for="mobile">মোবাইল নম্বর (ইংরেজিতে) <span class="req">*</span></label>
+            <input class="input" id="mobile" type="tel" inputmode="numeric" placeholder="01XXXXXXXXX" maxlength="14" />
+            <div class="error-msg">সঠিক মোবাইল নম্বর লিখুন</div>
+          </div>
+          <div class="field">
+            <label for="tracking">ট্র্যাকিং নম্বর <span class="req">*</span></label>
+            <input class="input" id="tracking" type="text" placeholder="BD-XXXXXXXX-XXXXXX" />
+            <div class="error-msg">ট্র্যাকিং নম্বর লিখুন</div>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" type="submit" id="btn-track">🔍 অনুসন্ধান করুন</button>
+        </form>
+
+        <div id="my-apps" class="mt-3" hidden>
+          <h3 class="text-sm" style="text-transform:uppercase;color:var(--muted)">আমার সাম্প্রতিক আবেদন</h3>
+          <div id="my-apps-list"></div>
+        </div>
+      </div>
+
+      <!-- result -->
+      <div class="card card-pad mt-3" id="result-card" hidden>
+        <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:start">
+          <div>
+            <h2 id="r-service" style="font-size:1.2rem;margin-bottom:.3rem">—</h2>
+            <p class="text-muted text-sm" id="r-office" style="margin:0">—</p>
+          </div>
+          <span class="status-badge" id="r-status">—</span>
+        </div>
+        <div class="summary-box mt-2">
+          <div class="row"><span>ট্র্যাকিং নম্বর</span><b id="r-tracking">—</b></div>
+          <div class="row"><span>আবেদনের তারিখ</span><b id="r-date">—</b></div>
+          <div class="row"><span>মোবাইল</span><b id="r-mobile">—</b></div>
+        </div>
+        <h3 style="font-size:1.05rem;margin-top:1.2rem">অগ্রগতি</h3>
+        <ul class="timeline" id="r-timeline"></ul>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/services-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/backend.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/track.js"></script>
+</body>
+</html>
