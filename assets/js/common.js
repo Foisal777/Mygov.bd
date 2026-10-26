@@ -136,7 +136,23 @@ async function renderChrome() {
         </nav>
       </header>`;
 
-    $("#nav-toggle")?.addEventListener("click", () => $("#main-nav").classList.toggle("open"));
+    // Mobile nav toggle
+    const navToggle = $("#nav-toggle");
+    const mainNav = $("#main-nav");
+    navToggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      mainNav?.classList.toggle("open");
+    });
+    // Close mobile nav when clicking a link inside it
+    mainNav?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => mainNav.classList.remove("open"));
+    });
+    // Close mobile nav when clicking outside
+    document.addEventListener("click", (e) => {
+      if (mainNav?.classList.contains("open") && !e.target.closest(".site-header")) {
+        mainNav.classList.remove("open");
+      }
+    });
     $("#a11y-open-top")?.addEventListener("click", () => $("#a11y-panel").classList.add("open"));
     $("#logout-btn")?.addEventListener("click", async () => {
       await MyGovBackend.logout();
