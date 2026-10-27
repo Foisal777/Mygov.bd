@@ -61,6 +61,7 @@ Mygov.bd/
 ├── assets/
 │   ├── css/styles.css       # Citizen design system
 │   ├── css/admin.css        # Admin console styles
+│   ├── images/              # Demo photography + original skyline illustration
 │   └── js/
 │       ├── config.js        # 👉 Put your Supabase keys here
 │       ├── supabase-client.js
@@ -243,6 +244,14 @@ on-screen demo OTP so the registration flow never breaks.
 - Replace the demo captcha checkbox with Google reCAPTCHA / Turnstile before
   any non-demo use, and connect a real SMS gateway and the Porichoy/NID
   verification provider.
+
+## 🖼️ Visual assets
+
+The photographs in `assets/images/` are AI-generated illustrative images made
+for this demo; they are **not official government photographs**.
+`bangladesh-skyline.svg` is original vector artwork inspired by the public
+visual language of mygov.bd. No official logo, seal, or copyrighted site asset
+is bundled with this project.
 
 ## ⚖️ Disclaimer
 

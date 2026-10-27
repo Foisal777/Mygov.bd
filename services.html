@@ -8,16 +8,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preload" as="image" href="assets/images/bangladesh-hero.jpg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23006a4e'/%3E%3Ccircle cx='46' cy='18' r='6' fill='%23d9382e'/%3E%3C/svg%3E" />
 </head>
 <body>
   <div id="site-header"></div>
 
-  <section class="hero" style="padding:2.4rem 0 2.6rem">
+  <section class="hero hero-compact">
     <div class="container">
-      <h1 style="font-size:1.7rem">সেবা খাত সমূহ</h1>
+      <h1 style="font-size:clamp(1.7rem,3.5vw,2.2rem)">সেবা খাত সমূহ</h1>
       <p>সেবা খাত, দপ্তর বা সেবাগ্রহীতা অনুসারে খুঁজুন এবং অনলাইনে আবেদন করুন।</p>
-      <form class="search-box" id="service-search" style="margin-top:1rem">
+      <form class="search-box" id="service-search">
         <input type="search" id="service-query" placeholder="সেবার নাম বা দপ্তর লিখে খুঁজুন…" aria-label="সেবা খুঁজুন" />
         <button class="btn btn-primary" type="submit">🔍 অনুসন্ধান</button>
       </form>

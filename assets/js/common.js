@@ -110,7 +110,11 @@ async function renderChrome() {
               <span>এক ঠিকানায় সরকারি সেবা <span class="bn-en">| One-stop government services</span></span>
             </span>
           </a>
-          <button class="nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
+          <button class="nav-toggle" id="nav-toggle" aria-label="মেন্যু">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+              <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
           <div class="header-actions">
             ${
               user
@@ -171,7 +175,7 @@ async function renderChrome() {
         <div>
           <div class="brand" style="margin-bottom:.8rem">
             ${brandSvg(44)}
-            <span class="brand-text"><b style="color:#fff">myGov মাইগভ</b><span style="color:#9ec7b6">এক ঠিকানায় সরকারি সেবা</span></span>
+            <span class="brand-text"><b style="color:var(--official-ink)">myGov মাইগভ</b><span style="color:var(--muted)">এক ঠিকানায় সরকারি সেবা</span></span>
           </div>
           <p>নাগরিক, ব্যবসায়ী ও সরকারি কর্মকর্তাদের জন্য সমন্বিত ডিজিটাল সরকারি সেবা প্ল্যাটফর্মের একটি ডেমো।</p>
         </div>
