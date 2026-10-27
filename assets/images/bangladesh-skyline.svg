@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 180" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="720" y1="0" x2="720" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#eefaf5"/>
+      <stop offset="1" stop-color="#d9f0e4"/>
+    </linearGradient>
+    <linearGradient id="water" x1="720" y1="118" x2="720" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d9f2f6"/>
+      <stop offset="1" stop-color="#c5e9ee"/>
+    </linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#3c884a" opacity=".12"/>
+    </pattern>
+  </defs>
+
+  <!-- Soft civic landscape -->
+  <rect width="1440" height="180" fill="url(#sky)"/>
+  <rect width="1440" height="180" fill="url(#dots)"/>
+  <path d="M0 105c90-20 154-12 230 9 86 23 141 9 214-8 78-18 143-5 211 19 69 25 139 16 213-9 75-25 141-15 216 11 70 24 142 20 216-8 48-18 95-17 140-5v66H0v-75Z" fill="#d5ecdf" opacity=".7"/>
+  <path d="M0 128c116-16 205-3 283 16 88 21 159 8 238-14 82-23 155-8 233 19 75 26 150 19 226-11 76-30 143-23 217 5 66 25 135 25 243-2v39H0v-52Z" fill="#bfe3cd" opacity=".8"/>
+  <rect x="0" y="151" width="1440" height="29" fill="url(#water)"/>
+  <path d="M0 160h1440M0 170h1440" stroke="#fff" stroke-opacity=".72" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Mosque and minarets, left -->
+  <g stroke="#3c884a" stroke-width="2" stroke-linejoin="round" opacity=".78">
+    <path d="M47 151V91h76v60" fill="#e9f7ee"/>
+    <path d="M39 91c2-16 14-25 29-25 14 0 25 9 27 25H39Z" fill="#b9dfc8"/>
+    <path d="M18 151V73h9v78M13 73h19M15 65h15v8H15z" fill="#e9f7ee"/>
+    <path d="M143 151V73h9v78M138 73h19M140 65h15v8h-15z" fill="#e9f7ee"/>
+    <path d="M70 151v-29a15 15 0 0 1 30 0v29M95 151h6" fill="#d6ecdd"/>
+    <path d="M47 112h76" />
+  </g>
+
+  <!-- Cable-stayed bridge -->
+  <g stroke="#3c884a" stroke-width="2" stroke-linecap="round" opacity=".72">
+    <path d="M170 135h514" stroke-width="4"/>
+    <path d="M170 140h514M178 144h498" stroke-opacity=".45"/>
+    <path d="M282 135V63M290 135V63M286 59h-4M286 62v-9" stroke-width="3"/>
+    <path d="M466 135V63M474 135V63M470 59h-4M470 62v-9" stroke-width="3"/>
+    <path d="M286 64 205 134M286 64l-45 70M286 64l-7 70M286 64l56 70M286 64l94 70" stroke-opacity=".55"/>
+    <path d="M470 64 389 134M470 64l-45 70M470 64l-7 70M470 64l56 70M470 64l94 70" stroke-opacity=".55"/>
+    <path d="M205 135v16M260 135v16M333 135v16M405 135v16M500 135v16M570 135v16M650 135v16" stroke-opacity=".55"/>
+    <path d="M170 135c30-14 55-14 85 0M365 135c30-14 55-14 85 0M570 135c30-14 55-14 85 0" stroke-opacity=".45"/>
+  </g>
+
+  <!-- Parliament-inspired civic building -->
+  <g stroke="#3c884a" stroke-width="2" stroke-linejoin="round" opacity=".8">
+    <path d="M738 151V78h174v73" fill="#eef8f1"/>
+    <path d="M724 79h202v9H724z" fill="#cde8d6"/>
+    <path d="M759 151V95h30v56M793 151V95h18v56M839 151V95h18v56M861 151V95h30v56" fill="#d6eddd"/>
+    <path d="M759 95 774 80l15 15M793 95l9-15 9 15M839 95l9-15 9 15M861 95l15-15 15 15" fill="#e9f7ee"/>
+    <path d="M712 151h226" stroke-width="3"/>
+  </g>
+
+  <!-- National memorial-inspired towers -->
+  <g stroke="#3c884a" stroke-width="2" stroke-linejoin="round" opacity=".78">
+    <path d="m975 151 25-70 9 70M1018 151l24-58 8 58M1057 151l24-45 7 45" fill="#cfe9d8"/>
+    <path d="M967 151h119" stroke-width="3"/>
+  </g>
+
+  <!-- Shaheed Minar-inspired monument -->
+  <g stroke="#3c884a" stroke-width="2" stroke-linejoin="round" opacity=".75">
+    <path d="M1130 151V83h8v68M1142 151V96h8v55M1153 151V89h8v62M1165 151V103h8v48" fill="#d7ecde"/>
+    <path d="M1122 83h59v8h-59z" fill="#bcdfc9"/>
+    <path d="M1113 151h78" stroke-width="3"/>
+    <circle cx="1151" cy="69" r="7" fill="#e7f6eb"/>
+    <path d="M1151 76v7"/>
+  </g>
+
+  <!-- Trees and greenery -->
+  <g opacity=".9">
+    <g stroke="#27804a" stroke-width="2">
+      <path d="M1215 151v-27M1270 151v-34M1330 151v-25M1390 151v-31" stroke-linecap="round"/>
+      <circle cx="1215" cy="115" r="15" fill="#8dcc9d"/>
+      <circle cx="1205" cy="121" r="10" fill="#a9dcb4"/>
+      <circle cx="1270" cy="108" r="18" fill="#79c68e"/>
+      <circle cx="1257" cy="116" r="11" fill="#a5dcb0"/>
+      <circle cx="1330" cy="117" r="14" fill="#8dcc9d"/>
+      <circle cx="1340" cy="121" r="10" fill="#ade0b8"/>
+      <circle cx="1390" cy="111" r="17" fill="#74c38b"/>
+      <circle cx="1377" cy="117" r="11" fill="#a5dcb0"/>
+    </g>
+    <path d="M0 151c25-12 50-12 74 0M198 151c30-11 58-11 88 0M934 151c25-12 48-12 70 0M1180 151c35-12 70-12 108 0" stroke="#3c884a" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Small green commuter vehicle and bicycle -->
+  <g opacity=".85">
+    <path d="M538 143h42l-4-11h-31l-7 11Z" fill="#3c884a"/>
+    <path d="M544 132l5-7h17l6 7" fill="#d9f2e4" stroke="#3c884a" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="547" cy="145" r="5" fill="#254f3b" stroke="#fff" stroke-width="2"/>
+    <circle cx="571" cy="145" r="5" fill="#254f3b" stroke="#fff" stroke-width="2"/>
+    <circle cx="628" cy="141" r="9" stroke="#27804a" stroke-width="2"/>
+    <circle cx="651" cy="141" r="9" stroke="#27804a" stroke-width="2"/>
+    <path d="m628 141 11-14 12 14h-23Zm11-14h9m-9 0-4-5" stroke="#27804a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Airy clouds -->
+  <g fill="#fff" opacity=".62">
+    <path d="M104 41c4-9 13-13 22-11 5-12 22-15 31-5 8-5 20-1 23 8 7 0 12 4 13 9H99c1-1 3-1 5-1Z"/>
+    <path d="M1090 36c3-8 11-12 20-10 5-11 20-13 28-4 8-4 18-1 21 8 6 0 11 3 12 8h-85c1-1 2-1 4-2Z"/>
+  </g>
+</svg>
